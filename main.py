@@ -12,7 +12,6 @@ from colorama import Fore, Back, Style
 import time, random
 
 random.seed(time.time())
-
 import sys
 
 # So funktioniert das Spiel: Alle Räume sind in Richtungs-Dictionaries.
@@ -236,9 +235,9 @@ indoor_sounds = [
 ]
 
 outdoor_sounds = [
-  "The birds are singing loudly.",
-  "A dog is barking in the distance."
+    "The birds are singing loudly.", "A dog is barking in the distance."
 ]
+
 
 def random_sounds(room):
     zufall = random.randint(0, 100)
