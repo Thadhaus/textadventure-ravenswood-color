@@ -207,7 +207,7 @@ description = {
     'R17': 'A small summer house with a blue door.',
     'R18': 'The kitchen living in the summer house.',
     'R19': 'The storage room in the summer house.',
-    'R20': 'There is a floor hatch under the carpet in the storage room.',
+    'R20': 'You crawl through a floor hatch under the carpet in the storage room.',
     'R21': 'The gates are closed and locked.'
 }
 
