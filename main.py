@@ -41,8 +41,9 @@ north = {
     'R17': None,
     'R18': None,
     'R19': None,
-    'R20': 'R7',
-    'R21': 'R12'
+    'R20': 'R22',
+    'R21': 'R12',
+    'R22': 'R7'
 }
 south = {
     'R0': 'R2',
@@ -90,7 +91,8 @@ east = {
     'R18': 'R19',
     'R19': None,
     'R20': None,
-    'R21': None
+    'R21': None,
+    'R22': None
 }
 west = {
     'R0': 'R4',
@@ -114,7 +116,8 @@ west = {
     'R18': 'R17',
     'R19': 'R18',
     'R20': None,
-    'R21': None
+    'R21': None,
+    'R22': None
 }
 downward = {
     'R0': None,
@@ -138,7 +141,8 @@ downward = {
     'R18': None,
     'R19': 'R20',
     'R20': None,
-    'R21': None
+    'R21': None,
+    'R22': None
 }
 upstairs = {
     'R0': None,
@@ -162,7 +166,8 @@ upstairs = {
     'R18': None,
     'R19': None,
     'R20': None,
-    'R21': None
+    'R21': None,
+    'R22': None
 }
 # 'compass' bildet die Richtungs-Befehle auf die Richtungs-Dictionaries ab
 compass = {
@@ -207,8 +212,9 @@ description = {
     'R17': 'A small summer house with a blue door.',
     'R18': 'The kitchen living in the summer house.',
     'R19': 'The storage room in the summer house.',
-    'R20': 'You crawl through a floor hatch under the carpet in the storage room.',
-    'R21': 'The gates are closed and locked.'
+    'R20': 'You crawl through a floor hatch under the carpet in a long tunnel.',
+    'R21': 'The gates are closed and locked.',
+    'R22': 'A winding narrow passage carved into the rough stone.'
 }
 
 # to play different sound indoor and outdoor
@@ -224,6 +230,8 @@ indoor_rooms = [
     'R17',
     'R18',
     'R19',
+    'R20',
+    'R22'
 ]
 
 indoor_sounds = [
