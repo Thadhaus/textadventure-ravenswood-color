@@ -12,7 +12,6 @@ from colorama import Fore, Back, Style
 import time, random
 
 random.seed(time.time())
-import sys
 
 # So funktioniert das Spiel: Alle Räume sind in Richtungs-Dictionaries.
 # Diese Dictionaries 'north', 'south',... enthalten Schlüssel-Wert-Paare.
@@ -295,6 +294,7 @@ while (current_room is not None):
     elif command == 'quit':
         current_room = None  # Ohne Schmuck und ohne Sicherheitsfrage
     elif command == 'map':
+        import sys
         import generiere_karte as map
         map.hauptprogramm(sys.argv[0])  # der Name dieses Skripts als Parameter
     # Gibt es einen Weg in die gefragte Richtung?
