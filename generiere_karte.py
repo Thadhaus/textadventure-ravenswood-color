@@ -17,7 +17,7 @@ from colorama import Fore, Back, Style
 # Diese Liste muss man vielleicht an sein eigenes Textadventure anpassen!
 dicts = [
     'north', 'east', 'south', 'west', 'upward', 'upstairs', 'downward',
-    'downstairs', 'teleport'
+    'downstairs', 'teleport', 'watchout'
 ]
 
 
@@ -28,9 +28,10 @@ def parse_direction(zeile):
     try:
         richtung, rest = zeile.split('=')
     except:
-        #print ("Keine Zuweisung gefunden, hier ist wohl kein Dictionary ...")
-        return "fail"
-    #print("Ri: _{}_ - Re: _{}_".format(richtung.strip(),rest.strip()[1:-1]))
+        if len(zeile) > 0:
+            rest = zeile
+        else:
+            return 'fail'
     # Formatierungsartefakte entfernen
     neu = rest.replace("'", "")
     rest = neu.replace(" ", "")
@@ -41,19 +42,25 @@ def parse_direction(zeile):
         )
         listenende = -2
     # Das Ergebnis in eine Liste zurückverwandeln
-    verbindungsliste = list(rest.strip()[1:listenende].split(','))
+    if rest[-1] == '}':
+        verbindungsliste = list(rest[:-1].split(','))
+    else:
+        verbindungsliste = list(rest.strip()[1:listenende].split(','))
     return (verbindungsliste)
 
 
 def erzeuge_graph(vliste):
     ergebnis = ""
     for element in vliste:
-        von, nach = element.split(':')
-        if nach == 'None':
+        if element == '':
             pass
         else:
-            result = "{}->{}\n".format(von, nach)
-            ergebnis += result
+            von, nach = element.split(':')
+            if nach == 'None':
+                pass
+            else:
+                result = "{}->{}\n".format(von, nach)
+                ergebnis += result
     return (ergebnis)
 
 
@@ -93,6 +100,8 @@ def hauptprogramm(fname):
             pass
         elif line.startswith('compass'):
             pass
+        elif line.startswith('rauminhalt'):
+            pass
         elif fortsetzung:
             zeile += line.strip()
             if '}' in line:
@@ -100,18 +109,23 @@ def hauptprogramm(fname):
                 komplett = True
         elif any(richtung in line for richtung in dicts):
             if '=' in line:
-                zeile += line.strip()
-                fortsetzung = True
+                if ':' in line:
+                    zeile += line.strip()
+                    fortsetzung = True
+                if line.strip().endswith('{'):
+                    fortsetzung = True
+                    komplett = False
+                if '}' in line:
+                    komplett = True
+                    fortsetzung = False
         if komplett == True:
-            #print(f"Zeile ist {zeile}\n")
             result = parse_direction(zeile)
             zeile = ""
             if result == 'fail':
                 pass
             else:
-                alle_verbindungen += result
+                alle_verbindungen = alle_verbindungen + result
             komplett = False
-
     graph = erzeuge_graph(alle_verbindungen)
     schreibe_graphviz(graph, gvname)
     print("Fertig. Die Datei {} wurde erfolgreich erstellt".format(gvname))
