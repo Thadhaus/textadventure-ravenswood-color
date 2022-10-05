@@ -4,9 +4,9 @@
 
 # mit Farbe wird es bunter - siehe https://pypi.org/project/colorama/
 import colorama
-
+#from colorama import Fore, Back, Style
+Fore = colorama.Fore
 colorama.init(autoreset=True)
-from colorama import Fore, Back, Style
 
 # Mit Zufall wird es spannender
 import time, random
@@ -266,7 +266,6 @@ def hilfe():
         else:
             print(Fore.BLUE + Style.BRIGHT + f"'{befehl}' ", end='')
     print('\n')
-
 
 # Hier wird Start und Ziel festgelegt
 current_room = 'R0'
