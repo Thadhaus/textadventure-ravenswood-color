@@ -6,6 +6,7 @@
 import colorama
 #from colorama import Fore, Back, Style
 Fore = colorama.Fore
+Style = colorama.Style
 colorama.init(autoreset=True)
 
 # Mit Zufall wird es spannender
