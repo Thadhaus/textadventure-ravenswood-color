@@ -252,10 +252,10 @@ def random_sounds(room):
     zufall = random.randint(0, 100)
     if zufall < 11:
         if room in indoor_rooms:
-            text = indoor_sounds[random.randrange(len(indoor_sounds))]
+            text = indoor_sounds[random.choice(indoor_sounds)]
             print(text)
         else:
-            text = outdoor_sounds[random.randrange(len(outdoor_sounds))]
+            text = outdoor_sounds[random.choice(outdoor_sounds)]
             print(text)
 
 
