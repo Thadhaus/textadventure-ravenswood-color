@@ -244,7 +244,7 @@ indoor_sounds = [
 
 outdoor_sounds = [
     "The birds are singing loudly.", 
-  "A dog is barking in the distance."
+    "A dog is barking in the distance."
 ]
 
 
