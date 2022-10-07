@@ -235,7 +235,7 @@ indoor_rooms = [
 ]
 
 indoor_sounds = [
-    'It crunches and scratches in the wall. ',
+    'It crunches and scratches in the wall.',
     'It trips like rats under the floorboards.',
     'You hear a dripping water tap.',
     'You feel an opressive silence in the house.',
