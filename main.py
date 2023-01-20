@@ -231,7 +231,8 @@ indoor_sounds = [
 ]
 
 outdoor_sounds = [
-    "The birds are singing loudly.", "A dog is barking in the distance."
+    "The birds are singing loudly.", "A dog is barking in the distance.",
+    "Wind rustles in the leaves.", "A motorcycle roars past behind the hills."
 ]
 
 
