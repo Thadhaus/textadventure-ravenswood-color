@@ -280,7 +280,8 @@ while (current_room is not None):
     if command == 'help':
         hilfe()
     elif command == 'quit':
-        current_room = None  # Ohne Schmuck und ohne Sicherheitsfrage
+        print(f'Ok. You leave the game. Bye Bye.')
+        current_room = None
     elif command == 'map':
         import sys
         import generiere_karte as map
