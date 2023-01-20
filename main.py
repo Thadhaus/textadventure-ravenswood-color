@@ -269,11 +269,12 @@ while (current_room is not None):
     print(f'{Fore.YELLOW}{description[current_room]}')
     random_sounds(current_room)
     # Den Spieler nach seinem nächsten Kommando fragen
-    command = input(f'{Fore.GREEN}What do you want to do? ').lower()
+    command = input(
+        f'{Fore.GREEN}What do you want to do? {Fore.WHITE}').lower()
     # Alle unbekannten Eingaben ignorieren
     while command not in allowed_commands:
         command = input(
-            f'{Fore.RED}No such command. {Fore.GREEN}What do you want to do? '
+            f'{Fore.RED}No such command. {Fore.GREEN}What do you want to do? {Fore.WHITE}'
         ).lower()
     # alle Nicht-Richtungen müssen zuerst abgefangen werden
     if command == 'help':
