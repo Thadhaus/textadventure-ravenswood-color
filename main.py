@@ -12,8 +12,6 @@ colorama.init(autoreset=True)
 # Mit Zufall wird es spannender
 import time, random
 
-random.seed(time.time())
-
 # So funktioniert das Spiel: Alle Räume sind in Richtungs-Dictionaries.
 # Diese Dictionaries 'north', 'south',... enthalten Schlüssel-Wert-Paare.
 # Schlüssel ist der aktuelle Raum, Wert der Zielraum, in den ich gelange.
@@ -212,25 +210,15 @@ description = {
     'R17': 'A small summer house with a blue door.',
     'R18': 'The kitchen living in the summer house.',
     'R19': 'The storage room in the summer house.',
-    'R20': 'You crawl through a floor hatch under the carpet in a long tunnel.',
+    'R20':
+    'You crawl through a floor hatch under the carpet in a long tunnel.',
     'R21': 'The gates are closed and locked.',
     'R22': 'A winding narrow passage carved into the rough stone.'
 }
 
-# to play different sound indoor and outdoor
+# to play different sounds indoor and outdoor
 indoor_rooms = [
-    'R0',
-    'R1',
-    'R2',
-    'R3',
-    'R5',
-    'R6',
-    'R7',
-    'R8',
-    'R17',
-    'R18',
-    'R19',
-    'R20',
+    'R0', 'R1', 'R2', 'R3', 'R5', 'R6', 'R7', 'R8', 'R17', 'R18', 'R19', 'R20',
     'R22'
 ]
 
@@ -243,8 +231,7 @@ indoor_sounds = [
 ]
 
 outdoor_sounds = [
-    "The birds are singing loudly.", 
-    "A dog is barking in the distance."
+    "The birds are singing loudly.", "A dog is barking in the distance."
 ]
 
 
@@ -252,41 +239,42 @@ def random_sounds(room):
     zufall = random.randint(0, 100)
     if zufall < 11:
         if room in indoor_rooms:
-            text = indoor_sounds[random.choice(indoor_sounds)]
+            text = random.choice(indoor_sounds)
         else:
-            text = outdoor_sounds[random.choice(outdoor_sounds)]
+            text = random.choice(outdoor_sounds)
         print(text)
 
 
 def hilfe():
-    print(Fore.CYAN + '\nYou may use the following commands:')
+    print(f'{Fore.CYAN}\nYou may use the following commands:')
     for befehl in allowed_commands:
         if befehl == 'tp' or befehl == 'jump':
             pass
         else:
-            print(Fore.BLUE + Style.BRIGHT + f"'{befehl}' ", end='')
+            print(f"{Fore.BLUE}{Style.BRIGHT}'{befehl}' ", end='')
     print('\n')
+
 
 # Hier wird Start und Ziel festgelegt
 current_room = 'R0'
 final_room = 'R99'  # no final room so far ...
 # Begrüßung
-print(Fore.MAGENTA + '	*** Welcome to Ravenswood Manor ***')
+print(f'{Fore.MAGENTA}    *** Welcome to Ravenswood Manor ***')
 hilfe()
 # Ab hier folgt der Code, um im Spiel zu agieren
 command = ''
 # Das Spiel läuft in einer Endlos-Schleife
 while (current_room is not None):
     # Die Beschreibung des aktuellen Raums ausgeben
-    print(Fore.YELLOW + description[current_room])
+    print(f'{Fore.YELLOW}{description[current_room]}')
     random_sounds(current_room)
     # Den Spieler nach seinem nächsten Kommando fragen
-    command = input(Fore.GREEN + 'What do you want to do? ' +
-                    Fore.RESET).lower()
+    command = input(f'{Fore.GREEN}What do you want to do? ').lower()
     # Alle unbekannten Eingaben ignorieren
     while command not in allowed_commands:
-        command = input(Fore.RED + 'No such command. ' + Fore.GREEN +
-                        'What do you want to do? ' + Fore.RESET).lower()
+        command = input(
+            f'{Fore.RED}No such command. {Fore.GREEN}What do you want to do? '
+        ).lower()
     # alle Nicht-Richtungen müssen zuerst abgefangen werden
     if command == 'help':
         hilfe()
@@ -302,9 +290,8 @@ while (current_room is not None):
         current_room = compass[command][current_room]
         # Wurde das Spielziel erreicht?
         if current_room == final_room:
-            print(Fore.YELLOW + description[current_room])
-            print(Fore.MAGENTA + 'You found the final room. Game Over.' +
-                  Fore.RESET)
+            print(f'{Fore.YELLOW}{description[current_room]}')
+            print(f'{Fore.MAGENTA}You found the final room. Game Over.')
             current_room = None  # Die Abbruch-Bedingung für die Endlos-Schleife setzen
     else:
-        print(Fore.RED + 'There is no path in that direction. ', end='')
+        print(f'{Fore.RED}There is no path in that direction. ', end='')
